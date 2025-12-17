@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
 
         $this->command->newLine();
         $this->command->info('🎉 Database seeding completed!');
-        $this->command->info('📧 Admin login: admin@example.com / aufar123');
+        $this->command->info('📧 Admin login: adminmiftah@example.com / aufar123');
     }
     
 }
