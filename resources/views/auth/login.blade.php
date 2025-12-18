@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header bg-primary text-white "><center><h3>Mifzz Store</h3></center></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -52,20 +52,22 @@
                         </div>
 
                         <div class="row mb-0">
+                            <div class="d-grid gap-2">
+                                 {{-- ↑ d-grid = display grid, membuat button full width --}}
+                                    <button type="submit" class="btn btn-outline-primary btn-lg">
+                                    Login
+                                    </button>
+                            </div>
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>
-                            <hr />
+                            <hr>
                             <div class="d-grid gap-2">
-                                <a href="#" class="btn btn-outline-danger">
+                                <a href="{{ Route('auth.google') }}" class="btn btn-outline-danger">
                                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" class="me-2">Login dengan Google
                                 </a>
                             </div>

@@ -60,7 +60,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -68,6 +68,11 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="d-grid gap-2">
+                                <a href="{{ Route('auth.google') }}" class="btn btn-outline-danger">
+                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" class="me-2">Login dengan Google
+                                </a>
+                            </div>
                     </form>
                 </div>
             </div>
