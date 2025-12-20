@@ -68,7 +68,7 @@
                             <hr>
                             <div class="d-grid gap-2">
                                 <a href="{{ Route('auth.google') }}" class="btn btn-outline-danger">
-                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" class="me-2">Login dengan Google
+                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="40" class="me-2">
                                 </a>
                             </div>
                         </div>

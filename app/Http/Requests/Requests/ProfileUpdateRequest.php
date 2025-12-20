@@ -1,10 +1,9 @@
 <?php
+namespace App\Http\Requests;
 
-namespace App\Http\Requests\Requests;
-
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Models\User;
 
 class ProfileUpdateRequest extends FormRequest
 {
@@ -13,7 +12,7 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,48 +23,75 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
+            // Nama: wajib, string, max 255 karakter
+            'name'    => [
                 'required',
                 'string',
-                'max:225',
+                'max:255',
             ],
-            'email' => [
+
+            // Email: wajib, format email valid, unik (kecuali milik user ini)
+            // Kasus Penting: User ingin ganti nama tapi tidak ganti email.
+            // Jika validasi email tetap 'unique:users', maka akan error "Email sudah terdaftar" (karena email dia sendiri).
+            // Solusi: ->ignore($id) memberitahu database untuk melewati pengecekan unique pada baris ID user ini.
+            'email'   => [
                 'required',
                 'string',
                 'lowercase',
                 'email',
-                'max:225',
-
+                'max:255',
+                // Rule::unique('users')->ignore($this->user()->id)
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
-            'phone' => [
+
+            // Phone: opsional, regex khusus format Indonesia
+            // Menerima: 0812..., 62812..., +62812...
+            'phone'   => [
                 'nullable',
-                'image',
-                'mimes:png,jpg,jpeg,webp',
-                'max:2048',
-                'dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',  
+                'string',
+                'max:20',
+                'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/',
             ],
 
+            // Address: opsional, text max 500 karakter
+            'address' => [
+                'nullable',
+                'string',
+                'max:500',
+            ],
+
+            // Avatar: opsional
+            // Harus file gambar (mime: jpg, png, webp)
+            // Max ukuran 2MB (2048 KB)
+            // Dimensi minimal 100x100px agar tidak pecah/blur
+            'avatar'  => [
+                'nullable',
+                'image',
+                'mimes:jpeg,jpg,png,webp',
+                'max:2048',
+                'dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
+            ],
         ];
     }
 
-    public function messages(): array{
-        return [
-            'phone.regex' => 'Format nomor telepon tidak valid. Gunakan format 08xx atau +628xx.',
-            'avatar.max' => 'Ukuran foto maksimal 2MB.',
-            'avatar.dimensions' => 'Dimensi foto harus antara 100x100 hingga 2000x2000 pixel.',
-            'email.unique' => 'Email ini sudah digunakan oleh pengguna lain.',
-        ];
-    }
-
-     public function attributes(): array
+    public function messages(): array
     {
         return [
-            'name' => 'nama',
-            'email' => 'alamat email',
-            'phone' => 'nomor telepon',
+            'phone.regex'       => 'Format nomor telepon tidak valid. Gunakan format 08xx atau +628xx.',
+            'avatar.max'        => 'Ukuran foto maksimal 2MB.',
+            'avatar.dimensions' => 'Dimensi foto harus antara 100x100 hingga 2000x2000 pixel.',
+            'email.unique'      => 'Email ini sudah digunakan oleh pengguna lain.',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'name'    => 'nama',
+            'email'   => 'alamat email',
+            'phone'   => 'nomor telepon',
             'address' => 'alamat domisili',
-            'avatar' => 'foto profil',
+            'avatar'  => 'foto profil',
         ];
     }
 }
