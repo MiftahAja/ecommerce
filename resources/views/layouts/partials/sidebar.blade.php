@@ -13,7 +13,7 @@
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
-            <li class="sidebar-item">
+           <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-list-check"></i>
@@ -30,10 +30,5 @@
               </a>
             </li>
           </ul>
-          <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-            <div class="d-flex">
-              <li class="sidebar-item">
-                <a href="" class="sidebar-link"></a>
-              </li>
-          </div>
+          
         </nav>

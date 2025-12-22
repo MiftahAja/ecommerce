@@ -42,7 +42,7 @@ FUNGSI: Halaman utama website
                 <a href="{{ route('catalog.index', ['category' => $category->slug]) }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm text-center h-100">
                         <div class="card-body">
-                            <img src="{{ $category->image_url }}" alt="{{ $category->name }}"
+                            <img src="{{ $category->image }}" alt="{{ $category->name }}"
                                 class="rounded-circle mb-3" width="80" height="80" style="object-fit: cover;">
                             <h6 class="card-title mb-0">{{ $category->name }}</h6>
                             <small class="text-muted">{{ $category->products_count }} produk</small>
