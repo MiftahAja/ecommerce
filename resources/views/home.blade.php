@@ -38,12 +38,12 @@ FUNGSI: Halaman utama website
         <h2 class="text-center mb-4">Kategori Populer</h2>
         <div class="row g-4">
             @foreach($categories as $category)
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-3 col-md-4 col-lg-2">
                 <a href="{{ route('catalog.index', ['category' => $category->slug]) }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm text-center h-100">
                         <div class="card-body">
-                            <img src="{{ $category->image }}" alt="{{ $category->name }}"
-                                class="rounded-circle mb-3" width="80" height="80" style="object-fit: cover;">
+                            <img src="{{ $category->image_url }}" alt="{{ $category->name }}"
+                                class="rounded-circle mb-4 ml-" width="80" height="80" style="margin-left: 25px; object-fit: cover;">
                             <h6 class="card-title mb-0">{{ $category->name }}</h6>
                             <small class="text-muted">{{ $category->products_count }} produk</small>
                         </div>

@@ -1,14 +1,8 @@
 <?php
-// ========================================
-// FILE: app/Http/Middleware/AdminMiddleware.php
-// FUNGSI: Membatasi akses hanya untuk user dengan role 'admin'
-// ========================================
-
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
@@ -16,18 +10,11 @@ class AdminMiddleware
     /**
      * Handle an incoming request.
      *
-     * Method ini dipanggil SETIAP KALI ada request yang melewati middleware ini.
-     *
-     * @param Request $request  Request dari user
-     * @param Closure $next     Fungsi untuk melanjutkan ke proses berikutnya
-     * @return Response
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // ================================================
-        // STEP 1: Cek apakah user sudah login
-        // ================================================
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             // auth()->check() = return true jika sudah login, false jika belum
             // !auth()->check() = NOT login = belum login
 
