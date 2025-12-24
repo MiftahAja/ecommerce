@@ -62,7 +62,9 @@ class User extends Authenticatable
      */
     public function wishlists()
     {
-        return $this->hasMany(Wishlist::class);
+        // Relasi User ke Product melalui tabel wishlists
+        return $this->belongsToMany(Product::class, 'wishlists')
+        ->withTimestamps(); // Agar created_at/updated_at di pivot terisi
     }
 
     /**
@@ -105,11 +107,9 @@ class User extends Authenticatable
      */
     public function hasInWishlist(Product $product): bool
     {
-        return $this->wishlists()
-            ->where('product_id', $product->id)
-            ->exists();
+        return $this->wishlists()->where('product_id', $product->id)->exists();
     }
-
+    
     public function getAvatarUrlAttribute(): string
     {
         // Prioritas 1: Avatar yang di-upload (file fisik ada di server)
