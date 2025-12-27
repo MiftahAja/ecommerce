@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
     // Pesanan Saya
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/orders/{order}/success', [OrderController::class, 'success'])->name('orders.success');
     Route::get('/orders/{order}/pending', [OrderController::class, 'pending'])->name('orders.pending');
@@ -67,6 +67,11 @@ Route::middleware('auth')->group(function () {
 // ================================================
 // HALAMAN ADMIN (Butuh Login + Role Admin)
 // ================================================
+
+// routes/web.php (HAPUS SETELAH TESTING!)
+
+use App\Services\MidtransService;
+
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
             // Laporan Penjualan
@@ -99,7 +104,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 // ================================================
 Auth::routes();
 
-use App\Services\MidtransService;
 
 // ================================================
 // GOOGLE OAUTH ROUTES

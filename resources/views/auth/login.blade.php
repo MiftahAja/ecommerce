@@ -1,82 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white "><center><h3>Mifzz Store</h3></center></div>
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="col-md-5">
+        <div class="card border-0 shadow-lg rounded-4">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="d-grid gap-2">
-                                 {{-- ↑ d-grid = display grid, membuat button full width --}}
-                                    <button type="submit" class="btn btn-outline-primary btn-lg">
-                                    Login
-                                    </button>
-                            </div>
-                            <div class="col-md-8 offset-md-4">
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                            <hr>
-                            <div class="d-grid gap-2">
-                                <a href="{{ Route('auth.google') }}" class="btn btn-outline-danger">
-                                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="40" class="me-2">
-                                </a>
-                            </div>
-                        </div>
-                        <p class="mt-4 text-center mb-0">
-                            Belum punya akun? <a  href="{{ route('register') }}" class="text-decoration-none fw-bold">Daftar Sekarang</a>
-                        </p>
-                    </form>
+            {{-- Header --}}
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold mb-1">Mifzz Store</h3>
+                    <p class="text-muted mb-0">Login ke akun kamu</p>
                 </div>
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    {{-- Email --}}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email"
+                            class="form-control form-control-lg @error('email') is-invalid @enderror"
+                            name="email"
+                            value="{{ old('email') }}"
+                            placeholder="contoh@email.com"
+                            required autofocus>
+
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Password --}}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Password</label>
+                        <input type="password"
+                            class="form-control form-control-lg @error('password') is-invalid @enderror"
+                            name="password"
+                            placeholder="••••••••"
+                            required>
+
+                        @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- Remember --}}
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                            <label class="form-check-label">Remember me</label>
+                        </div>
+
+                        @if (Route::has('password.request'))
+                            <a href="{{ route('password.request') }}" class="text-decoration-none small">
+                                Lupa password?
+                            </a>
+                        @endif
+                    </div>
+
+                    {{-- Button Login --}}
+                    <div class="d-grid mb-3">
+                        <button class="btn btn-primary btn-lg rounded-pill">
+                            Login
+                        </button>
+                    </div>
+
+                    {{-- Divider --}}
+                    <div class="text-center text-muted my-3">atau</div>
+
+                    {{-- Google --}}
+                    <div class="d-grid mb-4">
+                        <a href="{{ route('auth.google') }}"
+                           class="btn btn-outline-danger btn-lg rounded-pill d-flex align-items-center justify-content-center gap-2">
+                            <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="22">
+                            Login dengan Google
+                        </a>
+                    </div>
+
+                    {{-- Register --}}
+                    <p class="text-center mb-0">
+                        Belum punya akun?
+                        <a href="{{ route('register') }}" class="fw-bold text-decoration-none">
+                            Daftar sekarang
+                        </a>
+                    </p>
+                </form>
             </div>
         </div>
     </div>
