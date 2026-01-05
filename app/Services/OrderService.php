@@ -25,6 +25,9 @@ class OrderService
     {
         // 1. Ambil Keranjang User
         $cart = $user->cart;
+        $priceFromDB = Product::find($request->product_id)->price;
+        $totalAmount = $priceFromDB * $request->quantity;
+
 
         if (!$cart || $cart->items->isEmpty()) {
             throw new \Exception("Keranjang belanja kosong.");

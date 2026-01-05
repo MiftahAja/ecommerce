@@ -1,0 +1,51 @@
+/* === INDUSTRIAL STYLE === */
+.hero-industrial {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-industrial::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+}
+
+.section-title {
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+/* === CARD EFFECT === */
+.card-industrial {
+    border: none;
+    transition: all .3s ease;
+}
+
+.card-industrial:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+/* === IMAGE ZOOM === */
+.img-zoom {
+    overflow: hidden;
+}
+
+.img-zoom img {
+    transition: transform .4s ease;
+}
+
+.img-zoom:hover img {
+    transform: scale(1.08);
+}
+
+/* === AOS FIX === */
+[data-aos] {
+    overflow: hidden;
+}

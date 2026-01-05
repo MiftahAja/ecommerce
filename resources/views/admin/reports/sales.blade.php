@@ -24,10 +24,10 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-search me-1"></i> Filter
                     </button>
-                    {{-- Tombol Export --}}
-                    <a href="{{ route('admin.reports.export-sales', request()->all()) }}" class="btn btn-success">
+                     {{-- Tombol Export --}}
+                    {{-- <a href="{{ route('admin.reports.export-sales', request()->all()) }}" class="btn btn-success">
                         <i class="bi bi-file-earmark-excel me-1"></i> Export Excel
-                    </a>
+                    </a>  --}}
                 </div>
             </form>
         </div>
