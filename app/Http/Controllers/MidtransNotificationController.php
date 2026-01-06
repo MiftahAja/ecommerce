@@ -180,8 +180,8 @@ class MidtransNotificationController extends Controller
             ]);
         }
 
-        // TODO: Kirim email konfirmasi pembayaran
-        // event(new PaymentSuccessful($order));
+        // Trigger event untuk kirim email konfirmasi pembayaran
+        event(new OrderPaidEvent($order));
     }
 
     /**
@@ -238,16 +238,4 @@ class MidtransNotificationController extends Controller
 
         // TODO: Logic tambahan untuk refund
     }
-
-    private function setSuccess(Order $order)
-    {
-        $order->update([
-            'status' => 'processing',
-            'payment_status' => 'paid',
-        ]);
-
-    // Fire & Forget
-    event(new OrderPaidEvent($order));
-    }
-
 }

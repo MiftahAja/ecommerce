@@ -12,7 +12,7 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -50,7 +50,6 @@ class ProfileUpdateRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:20',
-                'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/',
             ],
 
             // Address: opsional, text max 500 karakter
@@ -59,18 +58,6 @@ class ProfileUpdateRequest extends FormRequest
                 'string',
                 'max:500',
             ],
-
-            // Avatar: opsional
-            // Harus file gambar (mime: jpg, png, webp)
-            // Max ukuran 2MB (2048 KB)
-            // Dimensi minimal 100x100px agar tidak pecah/blur
-            'avatar'  => [
-                'nullable',
-                'image',
-                'mimes:jpeg,jpg,png,webp',
-                'max:2048',
-                'dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
-            ],
         ];
     }
 
@@ -78,8 +65,6 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'phone.regex'       => 'Format nomor telepon tidak valid. Gunakan format 08xx atau +628xx.',
-            'avatar.max'        => 'Ukuran foto maksimal 2MB.',
-            'avatar.dimensions' => 'Dimensi foto harus antara 100x100 hingga 2000x2000 pixel.',
             'email.unique'      => 'Email ini sudah digunakan oleh pengguna lain.',
         ];
     }

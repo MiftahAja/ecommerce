@@ -15,7 +15,7 @@
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('catalog.index') }}">Katalog</a></li>
             <li class="breadcrumb-item">
-                <a href="{{ route('catalog.index', ['category' => $product->category->slug]) }}">
+             <a href="{{ route('catalog.index', ['category' => $product->category->slug]) }}">
                     {{ $product->category->name }}
                 </a>
             </li>

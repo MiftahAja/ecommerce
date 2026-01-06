@@ -25,9 +25,8 @@ use App\Http\Controllers\MidtransNotificationController;
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Katalog Produk
+// {{-- Katalog Produk --}}
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
-Route::get('/products', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('/products/{slug}', [CatalogController::class, 'show'])->name('catalog.show');
 
 // ================================================
@@ -132,6 +131,9 @@ Route::controller(GoogleController::class)->group(function () {
         ->name('auth.google.callback');
 });
 
+use Illuminate\Http\Request;
 
-Route::post('midtrans/notification', [MidtransNotificationController::class, 'handle'])
-    ->name('midtrans.notification');
+Route::post('/midtrans/notification', function (Request $request) {
+    return response('OK', 200);
+});
+    

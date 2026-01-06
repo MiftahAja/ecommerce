@@ -103,6 +103,23 @@ class ProfileController extends Controller
     }
 
     /**
+     * Update password user.
+     */
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $validated = $request->validateWithBag('updatePassword', [
+            'current_password' => ['required', 'current_password'],
+            'password'         => ['required', 'confirmed', 'min:8'],
+        ]);
+
+        $request->user()->update([
+            'password' => \Illuminate\Support\Facades\Hash::make($validated['password']),
+        ]);
+
+        return back()->with('status', 'password-updated');
+    }
+
+    /**
      * Menghapus akun user permanen.
      */
     public function destroy(Request $request): RedirectResponse

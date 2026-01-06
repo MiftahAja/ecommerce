@@ -19,9 +19,10 @@ class OrderPaid extends Mailable
 
     // Visibility PUBLIC agar bisa diakses langsung di file VIEW blade.
     // Tidak perlu passing via with() di method content.
-    public function __construct(
-        public Order $order
-    ) {}
+    public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
 
     /**
      * Definisi Subjek dan Pengirim Email.

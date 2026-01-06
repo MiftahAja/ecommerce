@@ -32,7 +32,7 @@
     {{-- Card Body --}}
     <div class="card-body d-flex flex-column">
         {{-- Category --}}
-        <small class="text-muted mb-1">{{ $product->category->name }}</small>
+        <small class="text-muted mb-1">{{ $product->category->name ?? '-' }}</small>
 
         {{-- Product Name --}}
         <h6 class="card-title mb-2">
