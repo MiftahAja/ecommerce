@@ -27,61 +27,46 @@ class ProfileController extends Controller
     /**
      * Mengupdate informasi profil user.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
         $user = $request->user();
 
-        // 1. Handle Upload Avatar
-        // Cek apakah user mengupload file baru di input 'avatar'?
+        // Validasi KHUSUS avatar
+        $request->validate([
+            'avatar' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+        ]);
+
         if ($request->hasFile('avatar')) {
-            // Upload file baru dan dapatkan path-nya (e.g., avatars/xxx.jpg)
-            $avatarPath = $this->uploadAvatar($request, $user);
-
-            // Simpan path ke properti model, tapi belum di-save ke DB (masih di memory)
-            $user->avatar = $avatarPath;
+            $user->avatar = $this->uploadAvatar($request, $user);
         }
 
-        // 2. Update Data Text (Nama, Email, dll)
-        // fill() mengisi atribut model dengan data validasi, tapi belum disimpan ke DB.
-        // Ini lebih aman daripada $user->update() langsung karena kita mau cek 'isDirty' dulu.
-        $user->fill($request->validated());
+        // ❌ JANGAN ADA fill()
+        // ❌ JANGAN SENTUH nama / email
 
-        // 3. Cek Perubahan Email
-        // Jika email berubah, kita harus membatalkan status verifikasi email (isDirty cek perubahan di memory).
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        // 4. Simpan ke Database
-        // Method save() baru benar-benar menjalankan query UPDATE ke database.
         $user->save();
 
-        return Redirect::route('profile.edit')
-            ->with('success', 'Profil berhasil diperbarui!');
+        return back()->with('success', 'Foto profil berhasil diperbarui!');
     }
+
+
 
     /**
      * Helper khusus untuk menangani logika upload avatar.
      * Mengembalikan string path file yang tersimpan.
      */
-    protected function uploadAvatar(ProfileUpdateRequest $request, $user): string
+    protected function uploadAvatar(Request $request, $user): string
     {
-        // Hapus avatar lama (Garbage Collection)
-        // Cek 1: Apakah user punya avatar sebelumnya?
-        // Cek 2: Apakah file fisiknya benar-benar ada di storage 'public'?
         if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
             Storage::disk('public')->delete($user->avatar);
         }
 
-        // Generate nama file unik untuk mencegah bentrok nama.
-        // Format: avatar-{user_id}-{timestamp}.{ext}
         $filename = 'avatar-' . $user->id . '-' . time() . '.' . $request->file('avatar')->extension();
 
-        // Simpan file ke folder: storage/app/public/avatars
-        // return path relatif: "avatars/namafile.jpg"
-        $path = $request->file('avatar')->storeAs('avatars', $filename, 'public');
-
-        return $path;
+        return $request->file('avatar')->storeAs(
+            'avatars',
+            $filename,
+            'public'
+    );
     }
 
     /**

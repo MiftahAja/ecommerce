@@ -9,49 +9,80 @@ FUNGSI: Halaman utama website
 
 @section('content')
 <style>
-    .hero-industrial {
-        background: linear-gradient(135deg, #0d6efd, #0a58ca);
-        position: relative;
-        overflow: hidden;
-    }
+/* HERO – tema hejo sarua login/register */
+.hero-industrial {
+    background: linear-gradient(
+        120deg,
+        #0f3d2e,
+        #1f7a5c,
+        #5fbf9b,
+        #1f7a5c
+    );
+    background-size: 300% 300%;
+    animation: greenGradientMove 10s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
 
-    .hero-industrial::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -30%;
-        width: 500px;
-        height: 500px;
-        background: rgba(255,255,255,0.08);
-        border-radius: 50%;
-    }
+/* Animasi gradasi */
+@keyframes greenGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    .section-title {
-        font-weight: 700;
-        letter-spacing: .5px;
-    }
+/* efek bubble halus */
+.hero-industrial::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -25%;
+    width: 520px;
+    height: 520px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+}
 
-    .card-industrial {
-        border: none;
-        transition: all .3s ease;
-    }
+/* judul section */
+.section-title {
+    font-weight: 700;
+    letter-spacing: .5px;
+}
 
-    .card-industrial:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 35px rgba(0,0,0,.1);
-    }
+/* card konsisten */
+.card-industrial {
+    border: none;
+    border-radius: 18px;
+    transition: all .3s ease;
+}
 
-    .img-zoom {
-        overflow: hidden;
-    }
+.card-industrial:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(31,122,92,.25);
+}
 
-    .img-zoom img {
-        transition: transform .4s ease;
-    }
+/* gambar zoom */
+.img-zoom {
+    overflow: hidden;
+}
 
-    .img-zoom:hover img {
-        transform: scale(1.08);
-    }
+.img-zoom img {
+    transition: transform .4s ease;
+}
+
+.img-zoom:hover img {
+    transform: scale(1.08);
+}
+.btn-outline-success {
+    border-color: #1f7a5c;
+    color: #1f7a5c;
+}
+
+.btn-outline-success:hover {
+    background: #1f7a5c;
+    color: #fff;
+}
+
 </style>
 {{-- Hero Section --}}
 <section class="hero-industrial text-white py-5">
@@ -64,9 +95,10 @@ FUNGSI: Halaman utama website
                 <p class="lead mb-4 text-white-75">
                     Produk berkualitas, harga kompetitif, dan pengiriman cepat.
                 </p>
-                <a href="{{ route('catalog.index') }}" class="btn btn-light btn-lg px-4">
+               <a href="{{ route('catalog.index') }}" class="btn btn-primary btn-lg px-4 rounded-pill">
                     Mulai Belanja <i class="bi bi-arrow-right ms-2"></i>
                 </a>
+
             </div>
 
             <div class="col-lg-6 d-none d-lg-block text-center" data-aos="zoom-in">
@@ -117,9 +149,10 @@ FUNGSI: Halaman utama website
             <h2 class="section-title mb-0" data-aos="fade-right">
                 Produk Unggulan
             </h2>
-            <a href="{{ route('catalog.index') }}" class="btn btn-outline-primary" data-aos="fade-left">
+            <a href="{{ route('catalog.index') }}" class="btn btn-outline-success rounded-pill" data-aos="fade-left">
                 Lihat Semua
             </a>
+
         </div>
 
         <div class="row g-4">
@@ -137,7 +170,7 @@ FUNGSI: Halaman utama website
     <div class="container">
         <div class="row g-4">
             <div class="col-md-6" data-aos="fade-right">
-                <div class="card card-industrial bg-warning border-0 h-100">
+                <div class="card card-industrial bg-success text-white border-0 h-100">
                     <div class="card-body d-flex flex-column justify-content-center">
                         <h3 class="fw-bold">Flash Sale</h3>
                         <p>Diskon hingga 50% produk pilihan</p>
@@ -149,11 +182,11 @@ FUNGSI: Halaman utama website
             </div>
 
             <div class="col-md-6" data-aos="fade-left">
-                <div class="card card-industrial bg-info text-white border-0 h-100">
+                <div class="card card-industrial bg-secondary text-white border-0 h-100">
                     <div class="card-body d-flex flex-column justify-content-center">
                         <h3 class="fw-bold">Member Baru?</h3>
                         <p>Voucher Rp50.000 untuk pembelian pertama</p>
-                        <a href="{{ route('register') }}" class="btn btn-light w-fit">
+                        <a href="{{ route('register') }}" class="btn btn-primary rounded-pill w-fit">
                             Daftar Sekarang
                         </a>
                     </div>

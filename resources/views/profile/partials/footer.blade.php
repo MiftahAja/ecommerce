@@ -9,7 +9,7 @@
             {{-- Brand & Description --}}
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-3">
-                    <i class="bi bi-bag-heart-fill me-2"></i>TokoOnline
+                    <i class="bi bi-bag-heart-fill me-2"></i>Mifzz Store
                 </h5>
                 <p class="text-secondary">
                     Toko online terpercaya dengan berbagai produk berkualitas.
@@ -63,15 +63,15 @@
                 <ul class="list-unstyled text-secondary">
                     <li class="mb-2">
                         <i class="bi bi-geo-alt me-2"></i>
-                        Jl. Contoh No. 123, Bandung
+                        Jl. Carigin No. 40, Bandung
                     </li>
                     <li class="mb-2">
                         <i class="bi bi-telephone me-2"></i>
-                        (022) 123-4567
+                        (+62) 895-0543-0050
                     </li>
                     <li class="mb-2">
                         <i class="bi bi-envelope me-2"></i>
-                        info@tokoonline.com
+                        miftahaufar@gmail.com
                     </li>
                 </ul>
             </div>

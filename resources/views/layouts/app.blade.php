@@ -2,7 +2,23 @@
      FILE: resources/views/layouts/app.blade.php
      FUNGSI: Master layout untuk halaman customer/publik
      ================================================ --}}
+<style>
+/* GLOBAL BASE STYLE */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f6faf8; /* abu-hejo lemes */
+    color: #1f2937;
+}
+.alert {
+    border-radius: 14px;
+}
+.alert-success {
+    background-color: #e6f6f0;
+    color: #166b4d;
+    border: none;
+}
 
+</style>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -45,7 +61,7 @@
     {{-- ============================================
          MAIN CONTENT
          ============================================ --}}
-    <main class="min-vh-100">
+    <main class="flex-grow-1">
         @yield('content')
     </main>
 

@@ -2,11 +2,83 @@
      FILE: resources/views/partials/navbar.blade.php
      FUNGSI: Navigation bar untuk customer
      ================================================ --}}
+<style>
+/* NAVBAR GREEN THEME */
+.navbar-green {
+    background: linear-gradient(
+        120deg,
+        #0f3d2e,
+        #1f7a5c,
+        #5fbf9b
+    );
+    background-size: 200% 200%;
+    animation: greenGradientMove 12s ease infinite;
+    box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+/* brand */
+.navbar-green .navbar-brand {
+    color: #fff !important;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+/* link */
+.navbar-green .nav-link {
+    color: rgba(255,255,255,.85) !important;
+    transition: all .3s ease;
+}
+
+.navbar-green .nav-link:hover {
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+/* search */
+.navbar-green .form-control {
+    border-radius: 50px 0 0 50px;
+    border: none;
+}
+
+.navbar-green .btn-outline-primary {
+    border-radius: 0 50px 50px 0;
+    border: none;
+    background: #1f7a5c;
+    color: #fff;
+}
+
+.navbar-green .btn-outline-primary:hover {
+    background: #166b4d;
+}
+
+/* badge */
+.navbar-green .badge {
+    background: #ff4d4d !important;
+}
+
+/* dropdown */
+.navbar-green .dropdown-menu {
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+/* tombol daftar */
+.navbar-green .btn-primary {
+    background: linear-gradient(135deg, #2ecc9a, #1f7a5c);
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.navbar-green .btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-green sticky-top">
     <div class="container">
         {{-- Logo & Brand --}}
-        <a class="navbar-brand text-primary" href="{{ route('home') }}">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <i class="bi bi-bag-heart-fill me-2"></i>
             MifzStore
         </a>
