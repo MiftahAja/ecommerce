@@ -1,10 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+:root {
+    --bs-primary: #198754;       /* green */
+    --bs-primary-rgb: 25,135,84;
+}
+
+.btn-primary {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-primary:hover {
+    background-color: #157347;
+    border-color: #146c43;
+}
+.catalog-filter .card {
+    border-radius: 12px;
+}
+
+.catalog-filter .card-header {
+    background: linear-gradient(135deg, #198754, #20c997);
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+}
+
+.catalog-filter .form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+.text-success {
+    color: #198754 !important;
+}
+.page-item.active .page-link {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.page-link {
+    color: #198754;
+}
+
+.page-link:hover {
+    color: #146c43;
+}
+
+</style>
 <div class="container py-5">
     <div class="row">
         {{-- SIDEBAR FILTER --}}
-        <div class="col-lg-3 mb-4">
+        <div class="col-lg-3 mb-4 catalog-filter">
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white fw-bold">Filter Produk</div>
                 <div class="card-body">
@@ -43,7 +89,7 @@
         {{-- PRODUCT GRID --}}
         <div class="col-lg-9">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="mb-0">Katalog Produk</h4>
+                <h4 class="mb-0 fw-bold text-success">Katalog Produk</h4>
                 {{-- Sorting --}}
                 <form method="GET" class="d-inline-block">
                     @foreach(request()->except('sort') as $key => $value)

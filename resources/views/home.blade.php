@@ -82,7 +82,29 @@ FUNGSI: Halaman utama website
     background: #1f7a5c;
     color: #fff;
 }
+.category-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #e9f7ef; /* soft green */
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 {{-- Hero Section --}}
 <section class="hero-industrial text-white py-5">
@@ -124,11 +146,10 @@ FUNGSI: Halaman utama website
                 <a href="{{ route('catalog.index', ['category' => $category->slug]) }}" class="text-decoration-none">
                     <div class="card card-industrial text-center h-100">
                         <div class="card-body">
-                            <div class="img-zoom mb-3">
-                                <img src="{{ $category->image_url }}"
-                                     class="rounded-circle"
-                                     width="80" height="80"
-                                     style="object-fit: cover;">
+                           <div class="img-zoom img-center mb-3">
+                                <div class="category-image">
+                                    <img src="{{ $category->image_url }}" alt="{{ $category->name }}">
+                                </div>
                             </div>
                             <h6 class="mb-1 text-dark">{{ $category->name }}</h6>
                             <small class="text-muted">{{ $category->products_count }} produk</small>

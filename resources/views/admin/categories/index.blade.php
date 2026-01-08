@@ -4,29 +4,73 @@
 
 @push('styles')
 <style>
-    /* ===== FIX ICON & MODAL THEME ===== */
-    .bi {
-        font-family: bootstrap-icons !important;
-        font-style: normal;
-    }
+ :root {
+    --admin-primary: #2563eb;   /* blue-600 */
+    --admin-primary-dark: #1e40af;
+    --admin-soft: #eff6ff;
+}
+.card-header.bg-primary {
+    background: linear-gradient(135deg, var(--admin-primary), var(--admin-primary-dark)) !important;
+    border-radius: 12px 12px 0 0;
+}
+.btn-primary {
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
 
-    .modal-content {
-        background-color: #fff !important;
-    }
+.btn-primary:hover {
+    background-color: var(--admin-primary-dark);
+    border-color: var(--admin-primary-dark);
+}
 
-    .modal-backdrop.show {
-        opacity: .5;
-    }
+.btn-outline-warning {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
 
-    /* ===== SMOOTH MODAL ANIMATION ===== */
-    .modal.fade .modal-dialog {
-        transform: scale(.95);
-        transition: transform .2s ease-out;
-    }
+.btn-outline-warning:hover {
+    background-color: #f59e0b;
+    color: #fff;
+}
 
-    .modal.show .modal-dialog {
-        transform: scale(1);
-    }
+.btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: #fff;
+}
+.badge.bg-info-subtle {
+    background-color: #e0f2fe !important;
+    color: #0369a1 !important;
+}
+.badge.bg-success-subtle {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+}
+
+.badge.bg-secondary-subtle {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+}
+.table thead th {
+    font-weight: 600;
+    color: #334155;
+    background-color: #f8fafc;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f5f9;
+}
+.table img {
+    object-fit: cover;
+    border-radius: 10px;
+}
+.modal-content {
+    border-radius: 16px !important;
+}
+
+.modal-header.bg-primary {
+    background: linear-gradient(135deg, var(--admin-primary), var(--admin-primary-dark)) !important;
+}
+
 </style>
 @endpush
 

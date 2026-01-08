@@ -2,7 +2,7 @@
   <ul id="sidebarnav">
 
     <li class="nav-small-cap">
-      <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+      <i class="ti ti-dot nav-small-cap-icon fs-4"></i>
       <span class="hide-menu">MAIN</span>
     </li>
 

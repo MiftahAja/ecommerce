@@ -2,8 +2,19 @@
      FILE: resources/views/partials/product-card.blade.php
      FUNGSI: Komponen kartu produk yang reusable
      ================================================ --}}
+<style>
+.product-card {
+    border-radius: 14px;
+    transition: all .25s ease;
+}
 
-<div class="card product-card h-100 border-0 shadow-sm">
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(25, 135, 84, .2);
+}
+
+</style>
+<div class="card h-100 border-0 shadow-sm product-card">
     {{-- Product Image --}}
     <div class="position-relative">
         <a href="{{ route('catalog.show', $product->slug) }}">

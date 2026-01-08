@@ -3,6 +3,84 @@
 @section('title', 'Daftar Produk')
 
 @section('content')
+<style>
+:root {
+    --admin-primary: #2563eb;      /* blue-600 */
+    --admin-primary-dark: #1e40af; /* blue-800 */
+    --admin-bg-soft: #f8fafc;
+}
+h2.text-gray-800 {
+    color: #1e293b !important;
+    font-weight: 700;
+}
+.btn-primary {
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--admin-primary-dark);
+    border-color: var(--admin-primary-dark);
+}
+
+.btn-info {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+    color: #fff;
+}
+
+.btn-warning {
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+.card {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: var(--admin-bg-soft);
+    font-weight: 600;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f5f9;
+}
+.table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+.badge.bg-success {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+}
+.form-control,
+.form-select {
+    border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .15);
+}
+</style>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="h3 text-gray-800">Daftar Produk</h2>
     <a href="{{ route('admin.products.create') }}" class="btn btn-primary">
@@ -64,6 +142,12 @@
                     <td>
                         <a href="{{ route('admin.products.show', $product) }}" class="btn btn-sm btn-info">Detail</a>
                         <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="d-inline"
+                            onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
                     </td>
                 </tr>
                 @empty

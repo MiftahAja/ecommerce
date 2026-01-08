@@ -1,0 +1,121 @@
+/* =================================================
+   MARKETPLACE ADMIN DESIGN SYSTEM
+================================================= */
+.page-wrapper {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --success: #16a34a;
+    --warning: #f59e0b;
+    --danger: #dc2626;
+    --soft-bg: #f8fafc;
+    --text-dark: #0f172a;
+}
+
+/* ================= GLOBAL ================= */
+body {
+    background-color: #f1f5f9;
+}
+
+.page-wrapper {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* ================= HEADER ================= */
+.app-header {
+    background: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,.05);
+}
+
+/* ================= SIDEBAR ================= */
+.left-sidebar {
+    background: linear-gradient(180deg, var(--primary), var(--primary-dark)) !important;
+}
+
+.left-sidebar .sidebar-link,
+.left-sidebar .nav-small-cap {
+    color: rgba(255,255,255,.85) !important;
+}
+
+.left-sidebar .sidebar-link.active,
+.left-sidebar .sidebar-link:hover {
+    background: rgba(255,255,255,.15) !important;
+    border-radius: 10px;
+}
+
+/* ================= CARD ================= */
+.page-wrapper .card {
+    border-radius: 18px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    border: none;
+}
+
+/* ================= BUTTON ================= */
+.page-wrapper .btn.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+    border: none !important;
+}
+
+.page-wrapper .btn-info {
+    background-color: #0ea5e9 !important;
+    color: #fff !important;
+}
+
+.page-wrapper .btn-warning {
+    background-color: var(--warning) !important;
+    color: #fff !important;
+}
+
+.page-wrapper .btn-danger {
+    background-color: var(--danger) !important;
+    color: #fff !important;
+}
+
+/* ================= TABLE ================= */
+.page-wrapper .table thead th {
+    background-color: var(--soft-bg) !important;
+    font-weight: 700;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.page-wrapper .table tbody tr:hover {
+    background-color: #f1f5f9 !important;
+}
+
+/* ================= IMAGE ================= */
+.page-wrapper table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ================= BADGE ================= */
+.page-wrapper .badge.bg-success {
+    background-color: #dcfce7 !important;
+    color: #166534 !important;
+}
+
+.page-wrapper .badge.bg-secondary {
+    background-color: #e5e7eb !important;
+    color: #475569 !important;
+}
+
+/* ================= FORM ================= */
+.page-wrapper .form-control,
+.page-wrapper .form-select {
+    border-radius: 12px;
+}
+
+.page-wrapper .form-control:focus,
+.page-wrapper .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .2rem rgba(37,99,235,.2);
+}
+
+/* ================= PAGINATION ================= */
+.page-wrapper .pagination .page-item.active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}

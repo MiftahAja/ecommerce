@@ -8,7 +8,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -24,8 +23,6 @@ class CategoryController extends Controller
             ->latest()      // Urutkan dari yang terbaru (created_at desc)
             ->paginate(10); // Batasi 10 item per halaman
 
-        
-
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -34,14 +31,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // Sesudah (Cek Cache dulu)
-        // Logika:
-        // 1. Cek apakah ada data dengan key 'global_categories' di RAM (Cache)?
-        // 2. Jika ADA, kembalikan langsung (tanpa sentuh DB). Cepat!
-        // 3. Jika TIDAK ADA, jalankan function(), simpan hasilnya ke Cache selama 3600 detik (1 jam), lalu kembalikan.
-        $categories = Cache::remember('global_categories', 3600, function () {
-            return Category::withCount('products')->get(); // Sekalian Eager Load count produk
-        });
         // 1. Validasi Input
         $validated = $request->validate([
             // 'unique:categories': Pastikan nama belum dipakai di tabel categories
@@ -67,9 +56,6 @@ class CategoryController extends Controller
 
         // 4. Simpan ke Database
         Category::create($validated);
-
-        // CategoryController store/update/delete
-        Cache::forget('global_categories');
 
         return back()->with('success', 'Kategori berhasil ditambahkan!');
     }
@@ -107,9 +93,6 @@ class CategoryController extends Controller
 
         // 4. Update data di database
         $category->update($validated);
-
-        // CategoryController store/update/delete
-        Cache::forget('global_categories');
 
         return back()->with('success', 'Kategori berhasil diperbarui!');
     }
