@@ -85,7 +85,7 @@
             {{-- Header --}}
             <div class="card-body p-4">
                 <div class="text-center mb-4">
-                    <h3 class="fw-bold mb-1">Mifzz Store</h3>
+                    <h3 class="fw-bold mb-1">FlexiGowes</h3>
                     <p class="text-muted mb-0">Login ke akun kamu</p>
                 </div>
 

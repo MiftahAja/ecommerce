@@ -80,7 +80,7 @@
         {{-- Logo & Brand --}}
         <a class="navbar-brand" href="{{ route('home') }}">
             <i class="bi bi-bag-heart-fill me-2"></i>
-            MifzStore
+            FlexiGowes
         </a>
 
         {{-- Mobile Toggle --}}

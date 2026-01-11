@@ -105,6 +105,27 @@ FUNGSI: Halaman utama website
     align-items: center;
     justify-content: center;
 }
+.hero-visual {
+    width: 360px;
+    height: 280px;
+    position: relative;
+}
+
+.bg-hejo-card {
+    position: absolute;
+    inset: 0;
+    background: #1f7a5c;
+    border-radius: 28px;
+    box-shadow: 0 8px 20px rgba(15, 177, 75, 0.651);
+    z-index: 1;
+}
+.hero-img {
+    position: relative;
+    z-index: 2;
+    max-height: 260px;
+    margin: auto;
+    display: block;
+}   
 </style>
 {{-- Hero Section --}}
 <section class="hero-industrial text-white py-5">
@@ -120,13 +141,13 @@ FUNGSI: Halaman utama website
                <a href="{{ route('catalog.index') }}" class="btn btn-primary btn-lg px-4 rounded-pill">
                     Mulai Belanja <i class="bi bi-arrow-right ms-2"></i>
                 </a>
-
             </div>
-
-            <div class="col-lg-6 d-none d-lg-block text-center" data-aos="zoom-in">
-                <img src="{{ asset('images/hero-shopping.svg') }}"
-                     class="img-fluid"
-                     style="max-height: 420px;">
+        <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center" data-aos="zoom-in">
+            <div class="hero-visual position-relative">
+                <div class="bg-hejo-card"></div>
+                <img src="{{ asset('assets/images/sepeda-lipat.png') }}"
+                    class="img-fluid hero-img">
+                </div>
             </div>
         </div>
     </div>

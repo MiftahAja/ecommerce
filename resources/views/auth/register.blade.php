@@ -85,7 +85,7 @@
 
                 {{-- Header --}}
                 <div class="text-center mb-4">
-                    <h3 class="fw-bold mb-1 text-success">Mifzz Store</h3>
+                    <h3 class="fw-bold mb-1 text-success">FlexiGowes</h3>
                     <p class="text-muted mb-0">Buat akun baru</p>
                 </div>
 
